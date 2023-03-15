@@ -1,0 +1,154 @@
+To create database: create database <database_name>;
+
+To create table: create table <table_name>(attribute1, attribute2....);
+
+attributes: the field names of that table
+            <attribute_name> <data_type> <constraint>;
+			
+
+table description: describe <table_name>;
+
+delete table: drop table <table_name>;
+
+to add another field after table already created: 
+     alter table <table_name> add <field_name> <data_type>;
+
+to remove a field:
+     alter  table <table_name> drop column <field_name>;
+
+_____________________________________
+
+to insert data into table:
+    insert into <table_name> values(v1,v2,v3.....);	
+     v1- value corresponding to 1st field in table
+	  v2- value corresponding to 2nd field in table....
+	  
+~ if an attribute is not known or only chosen attributes are to be filled
+ for an entry:
+              insert into <table_name>(att1,att2) values(v1,v2);
+# here only values of att1 and att2 need to be filled
+
+
+_____________________________________
+
+Constraints: when defining attributes :
+    	<attribute_name> <data_type> <constraint>;
+		
+		
+PRIMARY KEY :  <attribute_name> <data_type> primary key;
+# makes that attribute the primary key of the table
+
+NOT NULL: the data entered in that field cannot be null type
+
+UNIQUE: data entered in that field must be unique from all 
+        other data in that field
+
+DEFAULT: <attribute_name> <data_type> default<default_value>;
+
+ if data is not inserted, default value is inserted automatically
+	
+AUTO_INCREMENT: attribute value doesnt need to be inserted and
+ auto increments the values from 1,2,3.... for successive entries
+
+
+WHERE: used to specify the type of data of an entry
+eg: set subject = 'bio'
+    where trade = 'med';
+this will set the subject to 'bio' in every entry where
+trade is 'med' 
+
+
+$ where constraint can be used in integration with
+ boolean logic
+
+eg: .....
+    where field_id = 1 OR trade = 'bio';
+# OR and AND can be used to select union or 
+intersection of fields
+ <,>(less than - greater than)
+  <=, >=(less than or equal to - greater than or equal to)
+  <> (not equal to)  
+_____________________________________
+
+updating tables : update <table_name>
+                  .....update_queries
+				    .....    ;
+
+update_queries:
+
+SET: set <field_name1> = '<newName1>', 
+     <field_name2> = '<newName2>'
+	 ....; 
+
+sets field name to the new name
+
+
+DELETE: delete from <table_name>
+        ....<condition>...
+deletes entries which fulfill the condition
+(eg: condition: where trade = 'bio';  will remove entries 
+with bio as trade)		
+		
+_____________________________________
+
+SELECT: used to fetch info from table
+
+: select * from <table_name>;
+#will fetch and display the whole table
+
+: select <field_name1>,<field_name2>
+  from <table_name>;
+#....display the columns with <field_name>1&2 fields
+
+_____________________________________
+~field names can be pre-penned with table names
+for easier readability
+eg: select <table_name>.<field_name>....
+_____________________________________
+
+ORDER BY: orders table wrt given field
+ eg:   select * from <table_name>
+    order by <field_name> DESC;
+    
+#will order all entries in descending order wrt given field
+order is ascending by default i.e. if DESC is not specified
+
+
+~order by multiple fields
+
+eg:  select * from <table_name>
+     order by <field_name1>, <field_name2>,....;
+	 
+# this will first order entries by 1st field
+and if some entries have same 1st field
+then it orders them by 2nd field and so on	 
+	  
+     	
+LIMIT: limits the results by given integer
+
+eg:  select * from <table_name>
+     limit 5;
+
+# this will only show the first 5 entries
+_____________________________________
+$SELECT can be used in integration with the
+ WHERE constraint
+
+eg: select * from <table_name;>
+    where <student_id> >= 1;
+	
+# this will only show the entries where 
+  student_id is greater than or equal to 1
+_____________________________________
+
+IN: checks the membership of given attribute
+
+eg:
+   select * from <table_name>
+   
+   where student_id in(1,2,3,4,5)
+   
+# this will return only those entries where the student_id
+ is present in the given sequence   
+  
+    	
